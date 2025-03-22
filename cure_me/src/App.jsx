@@ -4,22 +4,27 @@ import Dashboard from "./component/dashboard";
 import Register from "./component/Register";
 import Login from "./component/Login";
 import { StickyNavbar } from "./component/StickyNavbar";
-import VideoCarousel from "./component/VideoCarousel";
+import Carousel from "./component/Carousel"
+import Home from "./component/Home"
 export default function App() {
   const [user, setUser] = useState(null);
 
   return (
     <>
     
-      <StickyNavbar/>
+     
     
-    <div>
+    {/* <div>
       <VideoCarousel />
-    </div>
+    </div> */}
+ 
+    
     <Router>
+    <StickyNavbar/>
+    <Carousel/>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
-        <Route path="/login" element={<Login setUser={setUser} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login  />} />
         <Route path="/register" element={<Register />} />
 
         {/* Role-based Dashboard Routes */}

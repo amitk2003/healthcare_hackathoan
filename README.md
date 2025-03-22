@@ -18,6 +18,8 @@ Ensure you have the following installed:
 Create a new Python file `app.py`:
 
 ```python
+
+
 from flask import Flask, request, jsonify
 import torch
 from Predict import predict_image, return_model

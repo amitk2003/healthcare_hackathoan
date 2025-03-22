@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Navbar,
   MobileNav,
@@ -9,11 +10,14 @@ import {
 
 export function StickyNavbar() {
   const [openNav, setOpenNav] = React.useState(false);
+  const navigate = useNavigate();
 
   React.useEffect(() => {
-    window.addEventListener("resize", () => {
+    const handleResize = () => {
       if (window.innerWidth >= 960) setOpenNav(false);
-    });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navList = (
@@ -25,7 +29,7 @@ export function StickyNavbar() {
           variant="small"
           className="p-1 font-medium hover:text-gray-300 transition"
         >
-          <a href="#" className="flex items-center">{item}</a>
+          <Link to={`/${item.toLowerCase()}`} className="flex items-center">{item}</Link>
         </Typography>
       ))}
     </ul>
@@ -35,20 +39,20 @@ export function StickyNavbar() {
     <div className="w-full">
       <Navbar className="sticky top-0 z-50 h-max w-full bg-gray-900 px-6 py-3 shadow-lg">
         <div className="flex items-center justify-between text-white">
-          <Typography as="a" href="#" className="text-3xl font-bold">
-          CURE ME
+          <Typography as={Link} to="/" className="text-3xl font-bold">
+            CURE ME
           </Typography>
           <div className="hidden lg:flex items-center gap-6">{navList}</div>
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="text" size="sm" className="text-white border border-white">
+            <Button onClick={() => navigate('/login')} variant="text" size="sm" className="text-white border border-white">
               Log In
             </Button>
-            <Button variant="gradient" size="sm" className="bg-blue-600">
-              Sign In
+            <Button onClick={() => navigate('/register')} variant="gradient" size="sm" className="bg-blue-600">
+              Sign Up
             </Button>
           </div>
           {/* Mobile Menu Button */}
-          <IconButton
+          {/* <IconButton
             variant="text"
             className="lg:hidden text-white"
             onClick={() => setOpenNav(!openNav)}
@@ -62,19 +66,23 @@ export function StickyNavbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
-          </IconButton>
+          </IconButton> */}
         </div>
-        <MobileNav open={openNav} className="bg-gray-900 text-white">
+        {/* <MobileNav open={openNav} className="bg-gray-900 text-white">
           {navList}
           <div className="flex flex-col gap-3 mt-3">
-            <Button fullWidth variant="text" size="sm" className="text-white border border-white">
-              Log In
-            </Button>
-            <Button fullWidth variant="gradient" size="sm" className="bg-blue-600">
-              Sign In
-            </Button>
+            <Link to="/login">
+              <Button fullWidth variant="text" size="sm" className="text-white border border-white">
+                Login
+              </Button>
+            </Link>
+            <Link to="/register">
+              <Button fullWidth variant="gradient" size="sm" className="bg-blue-600">
+                Sign Up
+              </Button>
+            </Link>
           </div>
-        </MobileNav>
+        </MobileNav> */}
       </Navbar>
     </div>
   );

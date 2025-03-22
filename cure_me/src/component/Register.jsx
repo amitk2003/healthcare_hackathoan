@@ -26,8 +26,8 @@ export default function Register() {
     }
   };
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-800">
-      <div className="bg-red p-8 rounded-lg shadow-lg w-96">
+    <div className="flex justify-center items-center h-screen bg-emerald-900">
+      <div className="bg-zinc-800 p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-semibold text-center mb-4">Register</h2>
         <form onSubmit={handleRegister} className="space-y-4">
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required 
@@ -43,7 +43,7 @@ export default function Register() {
             <option value="patient">Patient</option>
             <option value="doctor">Doctor</option>
           </select>
-          <button type="submit" className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600">Register</button>
+          <button type="submit" className="w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-green-600">Register</button>
           {/* <button type="button" onClick={handleGoogleSignIn} className="w-full flex items-center justify-center bg-white border py-2 rounded-lg shadow hover:bg-gray-200"> */}
             {/* <FcGoogle className="mr-2" /> Sign up with Google
           </button> */}
